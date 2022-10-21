@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/duongKDR/b1.git"
+    "url": "git+https://github.com/duongKDR/demo_npm.git"
   },
   "keywords": [
     "npm",
@@ -18,9 +18,9 @@
   "author": "KRD",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/duongKDR/b1/issues"
+    "url": "https://github.com/duongKDR/demo_npm/issues"
   },
-  "homepage": "https://github.com/duongKDR/b1#readme",
+  "homepage": "https://github.com/duongKDR/demo_npm#readme",
   "dependencies": {
     "express": "^4.18.2"
   },
