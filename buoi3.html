@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div> 
+        <input id="doixung" name="chuoi" class="form-control form-control-lg" />
+        <button onclick="check()">Kiểm tra</button>
+        <div id="result"></div>
+    </div>
+</body>
+<script>
+    async function check() {
+        var input = document.getElementById("doixung").value;
+
+        if (input.length > 0 && input.length < 101 && /[A-Za-z]/.test(input)) {
+            var a = [];
+            var steps = 0;
+            input = input.toLowerCase();
+            console.log("Chuỗi nhập vào:", input);
+            
+            for (var char of input) {
+                a.push(char);
+            }
+            
+            for (let i = 0; i < Math.floor(a.length / 2); i++) {
+                if (a[i] !== a[a.length - 1 - i]) {
+                    steps++;
+                }
+            }
+            
+            if (steps > 0) {
+                // console.log("Chuỗi không đối xứng.");
+                // console.log(`Cần ${steps} bước để biến thành chuỗi đối xứng.`);
+                document.getElementById("result").innerHTML = "Chuỗi không đối xứng.<br>Cần " + steps + " bước để biến thành chuỗi đối xứng.";
+            } else {
+                // console.log("Chuỗi đã nhập là chuỗi đối xứng.");
+                document.getElementById("result").innerHTML = "Chuỗi đã nhập là chuỗi đối xứng.";
+            }
+        } else {
+            document.getElementById("result").innerHTML = "Vui lòng nhập đúng yêu cầu.";
+
+            // console.log("Vui lòng nhập đúng yêu cầu.");
+        }
+    }
+</script>
+</html>
