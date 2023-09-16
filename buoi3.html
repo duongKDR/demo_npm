@@ -1,19 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <div> 
-        <input id="doixung" name="chuoi" class="form-control form-control-lg" />
+    <div>
+        <h3> Đối xứng</h3>
+        <input id="doixung" class="form-control form-control-lg" />
         <button onclick="check()">Kiểm tra</button>
         <div id="result"></div>
     </div>
+    <div>
+        <h3> Bóng nảy</h3>
+        <span>
+            Nhập N là số nguyên dương với lớn hơn 0 và bé hơn 101:
+            <input id="N" class="form-control form-control-lg" />
+            Nhập X là số nguyên dương với lớn hơn 0 và bé hơn 10001:
+
+            <input id="X"class="form-control form-control-lg" />
+        </span>
+        
+        <div>
+            Nhập dãy L cách nhau bởi dấu cách và lớn hơn 0 và bé hơn 101:
+        <input id="L"class="form-control form-control-lg" />
+        </div>
+        <button onclick="tinhSoLanNayBong()">Kiểm tra</button>
+        <div id="result2"></div>
+    </div>
+    <div>
+        <h3> Tìm trùng </h3>
+        <input id="trung"  class="form-control form-control-lg" />
+        <button onclick="checkTF()">Kiểm tra</button>
+        <div id="result3"></div>
+        
+    </div>
 </body>
 <script>
-    async function check() {
+    function check() {
         var input = document.getElementById("doixung").value;
 
         if (input.length > 0 && input.length < 101 && /[A-Za-z]/.test(input)) {
@@ -21,11 +48,11 @@
             var steps = 0;
             input = input.toLowerCase();
             console.log("Chuỗi nhập vào:", input);
-            
+
             for (var char of input) {
                 a.push(char);
             }
-            
+
             for (let i = 0; i < Math.floor(a.length / 2); i++) {
                 if (a[i] !== a[a.length - 1 - i]) {
                     steps++;
@@ -46,5 +73,57 @@
             // console.log("Vui lòng nhập đúng yêu cầu.");
         }
     }
+    function tinhSoLanNayBong() {
+        var N = parseInt(document.getElementById("N").value);
+        var X = parseInt(document.getElementById("X").value);
+        var L = [];
+        var input = document.getElementById("L").value;
+        L = input.split(' ')
+        console.log(L);
+        var d = 0;
+        var lanNay = 0;
+        if (N > 0 && N < 101 || X > 0 && X < 10001 || L > 0 && L < 101) {
+            while (d <= X && lanNay <= N) {
+                d += L[lanNay];
+                lanNay++;
+            }
+            var soLanNayTruocKhiVuotX = lanNay;
+
+            if (soLanNayTruocKhiVuotX >= 0) {
+                document.getElementById("result2").innerHTML = "Số lần bóng nảy trước khi vượt qua độ X là:" + soLanNayTruocKhiVuotX;
+            } else {
+                console.log("Bóng không bao giờ vượt qua độ X.");
+            }
+        } else {
+            document.getElementById("result2").innerHTML = "Vui lòng nhập đúng yêu cầu.";
+
+            // console.log("Vui lòng nhập đúng yêu cầu.");
+        }
+    }
+function checkTF() {
+    var input =[]
+    var  L = document.getElementById("trung").value;
+    input = L.split(' ')
+        if (input.length > 0 && input.length < 1000000) {
+            var a = [];
+            var n  = false;
+            
+            console.log("Chuỗi nhập vào:", input);
+
+            for (var char of input) {
+                a.push(char);
+            }
+
+            for (let i = 0; i < Math.floor(a.length ); i++) {
+                if (a[i] == a[a.length- i]) {
+                    n = true;
+                    break
+                }
+            }
+            document.getElementById("result3").innerHTML = n;
+            
+}}
+
 </script>
+
 </html>
